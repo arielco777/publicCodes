@@ -1,0 +1,140 @@
+Shutdown:
+$ shutdown -h now : shutdown now
+$ shutdown -r now : restart
+$ shutdown -h +10 : shutdown in 10 minutes. Same with restart
+$ shutdown -c :	    cancel the shutdown
+$ systemctl suspend: hibernate (In root)
+
+Calendar:
+$ cal mm yyyy OR cal yyyy OR cal dd mm yyyy OR cal (current date)
+
+Switch user:
+Switch user:		$ su - root (or just su -. root = root user)
+To a specific user: 	$ su - username : 
+Root user in ubuntu:	$ sudo -i for Ubuntu 
+Logout and back to $ exit OR logout OR Ctrl+D (to go back to previous user in root)
+
+Print Working Directory:
+Prints the path the user is located: $ pwd: 
+
+Change Directory:
+jump to home directory:			$ cd OR cd ~ (~ home directory)
+Change to a specifi folder: 		$ cd directory
+to go back one folder: 			$ cd ..
+go back a certain amount of folders: 	$ cd ../..
+
+List:
+Shows what is in my directory:  $ ls 
+Shows a specific folder:	$ ls folder/folder 
+Show all files (hidden):	$ ls -a (-a = all)
+Ubuntu show all:		$ la
+
+Clear terminal:
+Ctrl+L OR $ clear
+
+Tab Completion:
+TAB to complete the word
+Helps find the word if you don't know how it ends by pressing tab repeatidly
+
+Directories:
+Create: $ mkdir folder/folder (will create last folder)
+        $ mkdir -p folder/folder (will create both folders)
+	$ mkdir folder1 folder2 (will create both folders in the current path)
+Tree:	$ sudo apt install tree (install tree through "Super Use DO" command
+	$ tree (in a pathway) OR tree folder (to see the tree in a certain folder)
+	$ tree -a (show all with hidden files and folders)
+
+Files:
+Create: 			$ ls > file.txt (or any other extension. Will create a file in that path with what is in ls)
+				$ touch file1 file2 file3 (create many files)
+				$ > file (will create an empty file of the extension. No extension = *.txt)
+Show what's in file: 		$ cat file.txt (cat = Concatenate. Will output line by line what's in the file)
+Print: 				$ echo "Hello World" (Will print "Hello World" on the terminal)
+Write in file: 			$ echo "Hello World" > text.txt (will save what's on the echo in a file)
+Create a file from other files: $ cat text* > newfile.txt (* means everything. Send all files with text at the begining in new file) 
+Append a line in a file : 	$ cat text* >> newfile.txt (>> append unlike > which writes in file)
+Read file in terminal app: 	$ less newfile.txt (q to quit)
+Word Count :			$ wc -l file (-l to say lines. Without -l, will count chars)
+
+VI Editor:
+Start vi: $ vi textfile 
+ESC 	: Command mode
+i   	: Edit
+:w  	: save (write)
+:q! 	: quit without saving
+:wq 	: save and quit
+yy  	: copy line
+xyy 	: x amount of lines from the cursor to copy
+p   	: copy line
+dd  	: delete line
+xdd 	: delete x amount of lines
+gg  	: go to beginning of the file
+xgg 	: go to x line in doc
+G   	: go to end of file
+:set nu : show line numbers
+?x	: find the x
+:nohl	: remove the hightlighted word
+
+
+
+Files and folders (USE -i IF YOU'RE NOT SURE!):
+Move: 	 $ mv file tofolder (move "file" to the "tofolder" in the path
+	 $ mv folder/file . (move file in the folder to the current path (.))
+	 $ mv file folder file folder (will check the last string and move whatever is before to that folder)
+	 $ mv folder/folder/file folder/folder (Like above)
+Copy:	 $ cp file OR cp folder/file (will copy file to the current path)
+	 $ cp file newfile (will create a copy with new name)
+Rename:  $ mv file newfile (will "move" whatever is in that file to a new file and delete old file)
+	 $ mv folder newfolder (like above but for folders)
+Deleting:ITS IRREVERSIBLE! BE CAUTIOUS!
+	 $ rm dir/dir/file (will delete the file in the directory)
+	 $ rm file1 file2 (will delete both files)
+	 $ rmdir folder (will delete folder if it's empty)
+	 $ rm -r folder (will delete folder wether it's empty or not BE CAREFUL! GET TREE AND USE IT ON THE FOLDER)
+	 CAREFULL: rm t* IS NOT rm t * (rm t* will delete files starting with t, rm t * will delete files starting with t AND every file)
+	 $ USE rm -i file to get confirmation (y/n).
+
+Hidden Files and folders:
+Named: $ .file OR .folder (will be hidden)
+Show:  $ ls -a (-a = show all) OR ls .file OR tree -a OR la (list all)
+
+Piping (Examples):
+Count all files and folders:  	 	$ ls folder | wc -l (| =  "pipe". It takes the output from one command and "feed" it to another command)
+Show all files in a document: 	 	$ ls folder | less (will use the terminal app show what is in the path)
+Show a file sorted without save: 	$ sort file.txt | less (sort will sort and put all lines that are same one after the other. | won't save it)
+Show how many same lines in a file:	$ sort file | uniq | wc -l (will show how many of the same lines there are)
+
+Code (C#):
+1. Install mono: 	$ sudo apt install mono-complete
+2. Save code in .cs: 	$ > file.cs
+3. Code code code:	$ code file.cs (need to get Visual Code. look online to get .NET core and Visual Code)
+4. Compile: 		$ mcs -out:file.exe file.cs OR $ mcs file.cs (will be named the same .exe) OR $ csc file.cs (on newer versions of Linux)
+5. Run File:		$ mono file.exe
+6. Ctrl + C or finish program to end program (Ctrl+C cancels most things)
+7* To decompile:	$ monodis --output=file.txt file.exe (file.txt should be decompile-file.txt but any name works)
+
+Git:
+Install:	 $ sudo apt install git-all
+Local Repository:$ cd ~/
+		 $ mkdir folder
+		 $ cd folder
+		 $ git init (this will make this folder a local git repository)
+Add:		 $ git add file
+Config (A MUST): $ git config --global user.email EMAIL
+		 $ git config --global user.name FULL NAME
+Commit:		 $ git commit -m "DESCRIPTIVE MESSAGE" (this will commit what has been added)
+New Branch:	 $ git checkout -b BRANCH ($ git branch to see your branches)
+Clone:		 $ git clone ADDRESS
+		 $ git clone -b branch ADDRESS folder (folder is a new directory to add what is in the branch)
+Push: 		 $ git remote add origin https://<GITHUB_ACCESS_TOKEN>@github.com/<GITHUB_USERNAME>/<REPOSITORY_NAME>.git
+		 $ git push -u remote branch 
+	OR	 $ git push https://<GITHUB_ACCESS_TOKEN>@github.com/<GITHUB_USERNAME>/<REPOSITORY_NAME>.git
+Pull:		 $ git pull remote branch
+If merge problem on pull or push, add at the end --allow-unrelated-histories
+
+
+
+
+
+
+
