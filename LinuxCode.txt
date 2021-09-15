@@ -65,7 +65,7 @@ i   	: Edit
 :wq 	: save and quit
 yy  	: copy line
 xyy 	: x amount of lines from the cursor to copy
-p   	: copy line
+p   	: paste line
 dd  	: delete line
 xdd 	: delete x amount of lines
 gg  	: go to beginning of the file
