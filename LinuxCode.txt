@@ -54,7 +54,15 @@ Write in file: 			$ echo "Hello World" > text.txt (will save what's on the echo 
 Create a file from other files: $ cat text* > newfile.txt (* means everything. Send all files with text at the begining in new file) 
 Append a line in a file : 	$ cat text* >> newfile.txt (>> append unlike > which writes in file)
 Read file in terminal app: 	$ less newfile.txt (q to quit)
-Word Count :			$ wc -l file (-l to say lines. Without -l, will count chars)
+Word Count :			$ wc -l file (-l Line count. -c Character count. -w Word Count).
+Search:	 			$ grep word path 
+in file
+Sort:				$ sort file (If you don't want to actually sort but just see the sort, pipe it or send it to new file).
+				$ sort -kxn file (x represents the number of columns to sort. n means numerical sort (optional)). 
+Edit a string in file:		$ sed 's/oldstring/newstring/' file (Don't forget the last '/'. s = subsitute).
+Edit multiple strings:		$ sed 's/old1/new1/;s/old2/new2/' file (this will only change the first ecnounter in each line. Add 'g' at 				     the end of the '/' ($ sed 's/old/new/g')).
+
+
 
 VI Editor:
 Start vi: $ vi textfile 
@@ -92,7 +100,10 @@ Deleting:ITS IRREVERSIBLE! BE CAUTIOUS!
 	 $ rmdir folder (will delete folder if it's empty)
 	 $ rm -r folder (will delete folder wether it's empty or not BE CAREFUL! GET TREE AND USE IT ON THE FOLDER)
 	 CAREFULL: rm t* IS NOT rm t * (rm t* will delete files starting with t, rm t * will delete files starting with t AND every file)
-	 $ USE rm -i file to get confirmation (y/n).
+	 USE -i (rm -i ...) to get confirmation (y/n).
+Search:	 $ find [path] -type f(File) OR d(Directory) -name "name" (Case	sensitve. Use -iname instead)
+a f/d
+
 
 Hidden Files and folders:
 Named: $ .file OR .folder (will be hidden)
@@ -131,10 +142,3 @@ Push: 		 $ git remote add origin https://<GITHUB_ACCESS_TOKEN>@github.com/<GITHU
 	OR	 $ git push https://<GITHUB_ACCESS_TOKEN>@github.com/<GITHUB_USERNAME>/<REPOSITORY_NAME>.git
 Pull:		 $ git pull remote branch
 If merge problem on pull or push, add at the end --allow-unrelated-histories
-
-
-
-
-
-
-
