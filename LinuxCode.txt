@@ -56,6 +56,8 @@ Create a file from other files: $ cat text* > newfile.txt (* means everything. S
 Append a line in a file : 	$ cat text* >> newfile.txt (>> append unlike > which writes in file)
 Read file in terminal app: 	$ less newfile.txt (q to quit)
 Word Count :			$ wc -l file (-l to say lines. Without -l, will count chars)
+Find file : 			$ find path -type fd (File or Directory) -name (or -iname for both uppercase and lowercase) "filename"
+Find file and exec : 		$ find path -type f -name "filename" -exec command (cp, mv...) {} (output of find) \; (command delimiter)
 
 VI Editor:
 Start vi: $ vi textfile 
@@ -74,7 +76,7 @@ xgg 	: go to x line in doc
 G   	: go to end of file
 :set nu : show line numbers
 ?x	: find the x
-:nohl	: remove the hightlighted word
+:nohl	: remove the hightlight
 
 
 
@@ -125,12 +127,15 @@ Config (A MUST): $ git config --global user.email EMAIL
 		 $ git config --global user.name FULL NAME
 Commit:		 $ git commit -m "DESCRIPTIVE MESSAGE" (this will commit what has been added)
 New Branch:	 $ git checkout -b BRANCH ($ git branch to see your branches)
+Change Branch:	 $ git branch BRANCH (eg $ git branch master)
+Delete Branch: 	 $ git branch -d BRANCH (eg $ git branch -d lol. Local branch only)
 Clone:		 $ git clone ADDRESS
 		 $ git clone -b branch ADDRESS folder (folder is a new directory to add what is in the branch)
 Push: 		 $ git remote add origin https://<GITHUB_ACCESS_TOKEN>@github.com/<GITHUB_USERNAME>/<REPOSITORY_NAME>.git
 		 $ git push -u remote branch 
 	OR	 $ git push https://<GITHUB_ACCESS_TOKEN>@github.com/<GITHUB_USERNAME>/<REPOSITORY_NAME>.git
 Pull:		 $ git pull remote branch
+
 If merge problem on pull or push, add at the end --allow-unrelated-histories
 
 
