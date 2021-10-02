@@ -46,6 +46,8 @@ Tree:	$ sudo apt install tree (install tree through "Super Use DO" command
 	$ tree -a (show all with hidden files and folders)
 
 Files:
+Sort				$ sort [-kXn] file (This will sort alphabetically the file but not save,
+				(-kXn : k represents to choose a column, X is the column number, n=numerical)
 Create: 			$ ls > file.txt (or any other extension. Will create a file in that path with what is in ls)
 				$ touch file1 file2 file3 (create many files)
 				$ > file (will create an empty file of the extension. No extension = *.txt)
@@ -58,6 +60,10 @@ Read file in terminal app: 	$ less newfile.txt (q to quit)
 Word Count :			$ wc -l file (-l to say lines. Without -l, will count chars)
 Find file : 			$ find path -type fd (File or Directory) -name (or -iname for both uppercase and lowercase) "filename"
 Find file and exec : 		$ find path -type f -name "filename" -exec command (cp, mv...) {} (output of find) \; (command delimiter)
+Edit file without vi:		$ sed 's/oldstring/newstring/[g]' file (this will replace the first instance of every line from old string with newstring.
+				(the g says to replace all the instances, even on same line)
+				https://www.howtogeek.com/666395/how-to-use-the-sed-command-on-linux/ go on this website to see
+				how to use more sed commands.
 
 VI Editor:
 Start vi: $ vi textfile 
