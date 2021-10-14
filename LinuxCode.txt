@@ -29,6 +29,7 @@ Shows a specific folder:	$ ls folder/folder
 Show all files (hidden):	$ ls -a (-a = all)
 Ubuntu show all:		$ la
 Show sub-directories:		$ ls -R
+Show detailled list:		$ ls -l OR $ ls -lh (with -l will show bytes, -lh will show kbs)
 
 Clear terminal:
 Ctrl+L OR $ clear
@@ -84,6 +85,17 @@ G   	: go to end of file
 ?x	: find the x
 :nohl	: remove the hightlight
 
+Compressing:
+Compress:   $ gzip file (will compress at level 1)
+	    $ gzip -x file (will compress at level x)
+Decompress: $ gunzip file.gz
+
+Archiving:
+$ tar -cf newtarfile.tar filename/foldername (archives the file or folder into a tar file.)
+$ tar -cvf ... (-v [verbose] shows whatever is getting archived) 
+$ tar -czf newtarfile.tar.gz file/folder (-z archives then compresses)
+$ tar -xzf OR -xf tarfile.tar (-x extract archives and will decompress)
+$ tar -tf file.tar (-t show what is in the archive)
 
 
 Files and folders (USE -i IF YOU'RE NOT SURE!):
