@@ -30,6 +30,7 @@ Show all files (hidden):	$ ls -a (-a = all)
 Ubuntu show all:		$ la
 Show sub-directories:		$ ls -R
 Show detailled list:		$ ls -l OR $ ls -lh (with -l will show bytes, -lh will show kbs)
+Detailled list with permission: $ ls -la
 
 Clear terminal:
 Ctrl+L OR $ clear
@@ -38,7 +39,8 @@ Tab Completion:
 TAB to complete the word
 Helps find the word if you don't know how it ends by pressing tab repeatidly
 
-Directories:
+
+-----------------Directories:-----------------
 Create: $ mkdir folder/folder (will create last folder)
         $ mkdir -p folder/folder (will create both folders)
 	$ mkdir folder1 folder2 (will create both folders in the current path)
@@ -46,7 +48,7 @@ Tree:	$ sudo apt install tree (install tree through "Super Use DO" command
 	$ tree (in a pathway) OR tree folder (to see the tree in a certain folder)
 	$ tree -a (show all with hidden files and folders)
 
-Files:
+----------------------Files:------------------
 Sort				$ sort [-kXn] file (This will sort alphabetically the file but not save,
 				(-kXn : k represents to choose a column, X is the column number, n=numerical)
 Create: 			$ ls > file.txt (or any other extension. Will create a file in that path with what is in ls)
@@ -65,8 +67,24 @@ Edit file without vi:		$ sed 's/oldstring/newstring/[g]' file (this will replace
 				(the g says to replace all the instances, even on same line)
 				https://www.howtogeek.com/666395/how-to-use-the-sed-command-on-linux/ go on this website to see
 				how to use more sed commands.
+Display file content 1 screen:	$ more file (space for next screen, enter for 1 line, q to quit. Can only move forward)
+Like top, but can go backward:  $ less file (same, but b to go backwards)
+Display lines from the top:	$ head file (by default will show 150 lines, $ head -X file will show X amount of lines)
+Same as head, but from bottom:	$ tail file
+Search content in a line:	$ grep content file
+Redirect output to file:	$ command > newfile
+Append output to file:		$ command >> file
+Sorting:			$ sort file (this is just an OUTPUT and will not save in file. need to redirect output)
 
-VI Editor:
+//Piping (Examples):
+Count all files and folders:  	 	$ ls folder | wc -l (| =  "pipe". It takes the output from one command and "feed" it to another command)
+Show all files in a document: 	 	$ ls folder | less (will use the terminal app show what is in the path)
+Show a file sorted without save: 	$ sort file.txt | less (sort will sort and put all lines that are same one after the other. | won't save it)
+Show how many same lines in a file:	$ sort file | uniq | wc -l (will show how many of the same lines there are)
+
+
+
+-----------------VI Editor:-----------------
 Start vi: $ vi textfile 
 ESC 	: Command mode
 i   	: Edit
@@ -85,12 +103,14 @@ G   	: go to end of file
 ?x	: find the x
 :nohl	: remove the hightlight
 
-Compressing:
+
+------------------Compressing:----------------
 Compress:   $ gzip file (will compress at level 1)
 	    $ gzip -x file (will compress at level x)
 Decompress: $ gunzip file.gz
 
-Archiving:
+
+------------------Archiving:-------------------
 $ tar -cf newtarfile.tar filename/foldername (archives the file or folder into a tar file.)
 $ tar -cvf ... (-v [verbose] shows whatever is getting archived) 
 $ tar -czf newtarfile.tar.gz file/folder (-z archives then compresses)
@@ -98,7 +118,7 @@ $ tar -xzf OR -xf tarfile.tar (-x extract archives and will decompress)
 $ tar -tf file.tar (-t show what is in the archive)
 
 
-Files and folders (USE -i IF YOU'RE NOT SURE!):
+----------Files and folders (USE -i IF YOU'RE NOT SURE!):------------------
 Move: 	 $ mv file tofolder (move "file" to the "tofolder" in the path
 	 $ mv folder/file . (move file in the folder to the current path (.))
 	 $ mv file folder file folder (will check the last string and move whatever is before to that folder)
@@ -115,18 +135,15 @@ Deleting:ITS IRREVERSIBLE! BE CAUTIOUS!
 	 CAREFULL: rm t* IS NOT rm t * (rm t* will delete files starting with t, rm t * will delete files starting with t AND every file)
 	 $ USE rm -i file to get confirmation (y/n).
 
-Hidden Files and folders:
+//Hidden Files and folders:
 Named: $ .file OR .folder (will be hidden)
 Show:  $ ls -a (-a = show all) OR ls .file OR tree -a OR la (list all)
 
-Piping (Examples):
-Count all files and folders:  	 	$ ls folder | wc -l (| =  "pipe". It takes the output from one command and "feed" it to another command)
-Show all files in a document: 	 	$ ls folder | less (will use the terminal app show what is in the path)
-Show a file sorted without save: 	$ sort file.txt | less (sort will sort and put all lines that are same one after the other. | won't save it)
-Show how many same lines in a file:	$ sort file | uniq | wc -l (will show how many of the same lines there are)
 
-Code (C#):
-1. Install mono: 	$ sudo apt install mono-complete
+
+
+---------------------Code (C#):-------------------
+1. Install mono: 	$ sudo apt install mono-complete (in ubuntu)
 2. Save code in .cs: 	$ > file.cs
 3. Code code code:	$ code file.cs (need to get Visual Code. look online to get .NET core and Visual Code)
 4. Compile: 		$ mcs -out:file.exe file.cs OR $ mcs file.cs (will be named the same .exe) OR $ csc file.cs (on newer versions of Linux)
@@ -134,7 +151,114 @@ Code (C#):
 6. Ctrl + C or finish program to end program (Ctrl+C cancels most things)
 7* To decompile:	$ monodis --output=file.txt file.exe (file.txt should be decompile-file.txt but any name works)
 
-Git:
+
+----------------Users and Groups:-------------------
+//Anyone
+To see users: $ less /etc/passwd
+output:
+Username: password(x): UserId(UID):GroupID(GID: Full Name: /home/username :/bin/bash (shell)
+x points in /etc/shadow/ but passwd are encrypted and needs root access
+Find a user in /etc/passwd: $ grep username /etc/passwd
+
+To see groups: $ tail /etc/group
+Output:
+Groupname password(x: usually empty) GID Members
+
+//Users (root #)
+Create new user:    	# useradd username ; passwd username (passwd is not mandatory in this command, but user won't be able to login)
+New user with name: 	# useradd -c "Full Name" username
+Change password:    	# passwd username (Only root can change any password; user can only change its own by typing $ passwd but will need to know password)
+Delete user:	    	# userdel username (Add -f if user is logged in. This will not delete the home directory)
+Delete user and home: 	# userdel -r username (Add f (-rf) if user is logged in)
+**Check all homes:	$ ls /home/ (Will show all home directories)
+Add Full Name to user:	# usermod -c "Full Name" username
+
+//Groups (root #)
+Add groups:		# groupadd groupname
+Delete groups:		# groupdel groupname
+New name for group:	# groupmod -n newname oldname (-n new name)
+Add user to group:	# gpasswd -a username group
+Delete user from group:	# gpasswd -d username group
+Add multiples:		# gpasswd --members user1,user2,user3 group (Pay attention, no spaces after commas!!)
+Find what group user in:# groups username
+
+
+--------------------Permissions---------------------
+//To show permissions: # ls -l (Permission codes)
+-rwxrw-r--. 1 owner ownergroup Xb DateModified (filname or directory)
+-: Ordinary file, d Directory (There are other letters it can be that mean, but these are most common)
+rwx (Permissions of owner. r: read, w: write, x: execute)
+rw- (Permission of group. read, write, but not execute)
+r-- (Permission of others. read, but not write or execute, here will show special persmissions like sticky bit)
+1   (Will be another number if it's a link)
+
+
+//To change permissions, only root and owner can change persmission of a file
+chmod (u(ser) OR g(roup) OR o(ther) + OR - (add or remove) r OR w OR x filename or directory
+EXAMPLE:
+Add permission to user execute: $ chmod u+x file1 (Add execute to user for file1)
+Add permission to group:	$ chmod g+rw file1 (Add read and write to group for file1)
+Add many persmisions:		$ chmod u+r,g+x file1 (Add read to user, Add execute to group for file1)
+Add permissions to all:		$ chmod a+rw file (Add read and write to all for file1)
+Remove persmission:		$ chmod o-rwx file1 (Remove read, write, execute to others for file1)
+Make only permissions for group:$ chmod g=rx file (Will remove all permission to group and make read and execute the only permissions)
+Make only permission for all:	$ chmod a=r file1 (Will remove all persmissions for all and only allow read)
+
+//You can also make persmissions for multiple files by just adding them : $ chmod ... file1 file2 file OR file*
+
+//NUMERIC PERMISSIONS: This will set the permissions**	
+0: No permission
+1: Execute (x)
+2: Write (w)
+4: Read (r)
+$ chmod 775 file1 (Is the same as ug=rwx,o=rx. First 7=4(r)+2(w)+1(x) for user. Second 7=4(r)+2(w)+1(x) for group. 5=4(r)+1(x))
+
+//When adding persmission to directory, it will only affect the directory and not the files within. 
+To counter that, add -R in your command: $ chmod -R .... directory/
+
+//ROOT ONLY:
+Change owner of file: 			# chown user file
+Change owner of directory but not file: # chown user directory/
+Like top, but also files:		# chown -R user directory/
+Change group owner (same as chown but use chgro): # chgrp group file (even owner can change this)
+
+//Special permissions (Sticky bit (t)):
+$ chmod +t directory OR $ chmod 1NNN directory (only owner and root can delete and rename, but all can read, write, execute. Will add t at the end of permission codes)
+
+
+-------------------File Systems---------------------
+Display all mounted file systems (/): 	$ df or $ df -h(human readable)
+Insert (mount) a file system:	      	$ mount device directory (device is usually under /dev directory. Directory to be able to get files)
+Eject or unmount a file system:	      	$ umounts device
+Detailed information about processes:	$ ps u (current user) OR $ ps ua (all users)
+Display (P)rocess (Id)entifier of file:	# fuser -m directory (m for mounted)
+Kill a process:				# kill -9 PID (-9 ensures execution)
+If many users are using the process:	# kill -9 PID1 PID2 OR # fuser -mk /device (this needs to be done before unmounting device)
+
+//Links: Create a "copy" of a file or directory that in a given directory. Like a shortcut but not.
+Hard link: Will create a link that if the original file is deleted, the files will not be deleted until all links are deleted.
+$ ln whatToLink linkName
+Find and delete all hardlinks:
+1. Identify "inode" numbers: 	# ls -i file (will give a number. For this purpose, you need to be in root)
+2. Trace all the links:      	# find / -xdev -inum inode
+3. To remove all links:		# find / -xdev -inum inode -exec rm {} \;
+
+//Symbolic link (Soft link): Will create a link that if the original file or directory is deleted, it will delete the link as well
+$ ln -s whatToLink linkName
+
+//Package Manager (Redhat. This might be different on other distros):
+Use command rpm to manage packages. (Redhat Package Manager)
+Find list of all packages: 	# rpm -qa (this will be a LONG LIST)
+Specify a package to find:	# rpm -qa | grep package
+To uninstall pacakge:		# rpm -e package (this might fail with dependencies)
+To ignore dependencies:		# rpm -e --nodeps package
+To install a new package:
+1. Find the package in drive:	# ls | grep package
+2. Install packages:		# rpm -ivh packagename
+Install a online service package: # yum install service (ubuntu is # apt install service. Add -y to say yes to all confirmations)
+
+
+----------------------Git:--------------------------
 Install:	 $ sudo apt install git-all
 Local Repository:$ cd ~/
 		 $ mkdir folder
@@ -143,7 +267,7 @@ Local Repository:$ cd ~/
 Add:		 $ git add file
 Config (A MUST): $ git config --global user.email EMAIL
 		 $ git config --global user.name FULL NAME
-Commit:		 $ git commit -m "DESCRIPTIVE MESSAGE" (this will commit what has been added)
+Commit:		 $ git commit -m "DESCRIPTIVE MESSAGE" (this will commit LOCALLY what has been added)
 New Branch:	 $ git checkout -b BRANCH ($ git branch to see your branches)
 Change Branch:	 $ git branch BRANCH (eg $ git branch master)
 Delete Branch: 	 $ git branch -d BRANCH (eg $ git branch -d lol. Local branch only)
@@ -154,7 +278,7 @@ Push: 		 $ git remote add origin https://<GITHUB_ACCESS_TOKEN>@github.com/<GITHU
 	OR	 $ git push https://<GITHUB_ACCESS_TOKEN>@github.com/<GITHUB_USERNAME>/<REPOSITORY_NAME>.git
 Pull:		 $ git pull remote branch
 
-If merge problem on pull or push, add at the end --allow-unrelated-histories
+If merge problem on pull or push, add at the end of command --allow-unrelated-histories
 
 
 
