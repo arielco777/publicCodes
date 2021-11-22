@@ -11,7 +11,7 @@ $ cal mm yyyy OR cal yyyy OR cal dd mm yyyy OR cal (current date)
 Switch user:
 Switch user:		$ su - root (or just su -. root = root user)
 To a specific user: 	$ su - username : 
-Root user in ubuntu:	$ sudo -i for Ubuntu 
+**Root user in ubuntu:	$ sudo -i for Ubuntu 
 Logout and back to $ exit OR logout OR Ctrl+D (to go back to previous user in root)
 
 Print Working Directory:
@@ -140,8 +140,6 @@ Named: $ .file OR .folder (will be hidden)
 Show:  $ ls -a (-a = show all) OR ls .file OR tree -a OR la (list all)
 
 
-
-
 ---------------------Code (C#):-------------------
 1. Install mono: 	$ sudo apt install mono-complete (in ubuntu)
 2. Save code in .cs: 	$ > file.cs
@@ -162,7 +160,7 @@ Find a user in /etc/passwd: $ grep username /etc/passwd
 
 To see groups: $ tail /etc/group
 Output:
-Groupname password(x: usually empty) GID Members
+Groupname passwor: usually empty) GID Members
 
 //Users (root #)
 Create new user:    	# useradd username ; passwd username (passwd is not mandatory in this command, but user won't be able to login)
@@ -246,7 +244,7 @@ Find and delete all hardlinks:
 //Symbolic link (Soft link): Will create a link that if the original file or directory is deleted, it will delete the link as well
 $ ln -s whatToLink linkName
 
-//Package Manager (Redhat. This might be different on other distros):
+--------------------Package Manager (Redhat. This might be different on other distros):
 Use command rpm to manage packages. (Redhat Package Manager)
 Find list of all packages: 	# rpm -qa (this will be a LONG LIST)
 Specify a package to find:	# rpm -qa | grep package
