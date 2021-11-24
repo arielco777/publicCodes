@@ -281,7 +281,8 @@ Delete job on specific printer:	$ lprm -P printer - (Instead of - put job-id)
 		 	Look for PATH=$PATH:$HOME/bin
 			ADD :$HOME/folder at the end of that line (folder is where the exe is)
 			Save and exit
-5. Run the command:	$ filename
+5. Source it:		$ source filename
+6. Run the command:	$ filename
 
 ----------------------Git:--------------------------
 Install:	 $ sudo apt install git-all
