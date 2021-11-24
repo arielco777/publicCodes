@@ -255,6 +255,33 @@ To install a new package:
 2. Install packages:		# rpm -ivh packagename
 Install a online service package: # yum install service (ubuntu is # apt install service. Add -y to say yes to all confirmations)
 
+----------------------Printer----------------------
+Display printers (all) status:  $ lpstat -p
+Display status of 1 printer:    $ lpstat -p printer_name
+Display default printer:	$ lpstat -d
+Print a file default printer:	$ lpr file
+Print file on specific printer: $ lpr -P printer_name file
+Set default printer:		$ lpoptions -d printer_name
+List queue of default printer:	$ lpq
+List queue of specific printer:	$ lpq -P printer_name
+Cancel YOUR print:		$ lprm job-id(s) (can add more than one. Use lpq to check queue)
+				$ cancel job-id(s)
+
+**ROOT ONLY
+Delete all job default printer:	$ lprm - 
+Delete job on specific printer:	$ lprm -P printer - (Instead of - put job-id)
+
+
+---------------------C++ Compile and run-----------------------
+*. Install GCC as root: # yum install gcc gcc-c++ -y (-y means reply yes to confimations)
+1. Make code
+2. Compile and make exe: $ g++ file.cpp -o filename
+3. To run exe file:	 $ ./filename
+4. Add code to path(HOME): $ vi .bash_profile
+		 	Look for PATH=$PATH:$HOME/bin
+			ADD :$HOME/folder at the end of that line (folder is where the exe is)
+			Save and exit
+5. Run the command:	$ filename
 
 ----------------------Git:--------------------------
 Install:	 $ sudo apt install git-all
